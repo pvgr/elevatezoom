@@ -1649,11 +1649,13 @@ if ( typeof Object.create !== 'function' ) {
 
   $.fn.elevateZoom = function( options ) {
     return this.each( function() {
-      var elevate = Object.create( ElevateZoom );
+      if ( $( this ).data( 'elevateZoom' ) === undefined ) {
+        var elevate = Object.create( ElevateZoom );
 
-      elevate.init( options, this );
+        elevate.init( options, this );
 
-      $.data( this, 'elevateZoom', elevate );
+        $.data( this, 'elevateZoom', elevate );
+      }
     } );
   };
 

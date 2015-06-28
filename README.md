@@ -1,22 +1,7 @@
-[jQuery Zoom Plugin](http://www.elevateweb.co.uk/image-zoom/)
+[elevateZoom](http://www.elevateweb.co.uk/image-zoom/) - A jQuery image zoom plugin
 ================================
 
-elevateZoom - A jQuery image zoom plugin
-
-
-## Getting Started
-
-Include jQuery and the plugin on a page. Include your images and initialise the plugin.
-
-```html
-<img id="zoom_01" src='images/small/image1.png' data-zoom-image="images/large/image1.jpg"/>
-
-<script>
-    $('#zoom_01').elevateZoom();
-</script>
-```
-
-For more information on how to setup and customise, [check the examples](http://www.elevateweb.co.uk/image-zoom/examples).
+Forked from elevateZoom, version 3.0.8
 
 ## License
 Copyright (c) 2012 Andrew Eades

@@ -14,7 +14,7 @@ Forked from elevateZoom, version 3.0.8
 - [ ] Add destroy method
 - [ ] Merge any useful features from other forks
 - [x] Optimize calls to CSS method
-  - [ ] Move CSS settings to a CSS file, cleanup code
+  - [x] Move CSS settings to a CSS file, cleanup code
 - [ ] Improve documentation and examples
 
 ### License

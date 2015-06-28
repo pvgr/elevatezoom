@@ -1,0 +1,35 @@
+/*
+ *  jQuery elevateZoom 4
+ *
+ *  Created by Andrew Eades, forked by PVgr from jQuery elevateZoom 3.0.8
+ *
+ *  Copyright (c) 2015 Panyiotis “PVgr” Velisarakos
+ *  http://www.pvgr.eu/en/
+ *
+ *  Dual licensed under the GPL and MIT licenses.
+ *  http://en.wikipedia.org/wiki/MIT_License
+ *  http://en.wikipedia.org/wiki/GNU_General_Public_License
+ */
+
+.zoomLens {
+	border-color: #000;
+	border-style: solid;
+	border-width: 1px;
+ 	cursor: move;
+ 	display: none;
+ 	opacity: .4;
+ 	z-index: 100;
+}
+
+.zoomTint {
+	background: #333;
+}
+
+.zoomWindow {
+	background-color: #fff;
+	border-color: #888;
+	border-style: solid;
+	border-width: 4px;
+	display: none;
+	z-index: 101;
+}

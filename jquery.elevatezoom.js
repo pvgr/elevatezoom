@@ -932,12 +932,16 @@ if ( typeof Object.create !== 'function' ) {
       self.windowOffsetTop = self.windowOffsetTop + self.options.zoomWindowOffety;
       self.windowOffsetLeft = self.windowOffsetLeft + self.options.zoomWindowOffetx;
 
-      self.zoomWindow.css( 'top', self.windowOffsetTop );
-      self.zoomWindow.css( 'left', self.windowOffsetLeft );
+      self.zoomWindow.css( {
+        top: self.windowOffsetTop,
+        left: self.windowOffsetLeft
+      } );
 
       if ( self.options.zoomType === 'inner' ) {
-        self.zoomWindow.css( 'top', 0 );
-        self.zoomWindow.css( 'left', 0 );
+        self.zoomWindow.css( {
+          top: 0,
+          left: 0
+        } );
       }
 
       self.windowLeftPos = String( ( ( e.pageX - self.nzOffset.left ) * self.widthRatio - self.zoomWindow.width() / 2 ) * -1 );
@@ -1114,8 +1118,10 @@ if ( typeof Object.create !== 'function' ) {
           self.tintpos = 0;
         }
 
-        self.zoomTintImage.css( 'left', self.tintpos + 'px' );
-        self.zoomTintImage.css( 'top', self.tintposy + 'px' );
+        self.zoomTintImage.css( {
+          left: self.tintpos + 'px',
+          top: self.tintposy + 'px'
+        } );
       }
     },
 
@@ -1394,8 +1400,10 @@ if ( typeof Object.create !== 'function' ) {
         }
 
         if ( self.zoomLens ) {
-          self.zoomLens.css( 'width', lensWidth );
-          self.zoomLens.css( 'height', lensHeight );
+          self.zoomLens.css( {
+            width: lensWidth,
+            height: lensHeight
+          } );
         }
       }
     },

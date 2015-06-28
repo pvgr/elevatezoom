@@ -11,7 +11,7 @@ Forked from elevateZoom, version 3.0.8
 - [ ] Fix bugs / typos
 - [ ] Prevent multiple initializations
 - [ ] Add destroy method
-- [ ] Optimize CSS methods
+- [x] Optimize calls to CSS method
   - [ ] Move CSS settings to a CSS file, cleanup code
   - [ ] Merge any useful features from other forks
 - [ ] Improve documentation with examples

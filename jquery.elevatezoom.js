@@ -181,7 +181,7 @@ if ( typeof Object.create !== 'function' ) {
         if( self.largeWidth < self.options.zoomWindowWidth ) {
           lensWidth = self.nzWidth;
         } else {
-          lensWidth = ( self.options.zoomWindowWidth / self.widthRatio );
+          lensWidth = String( self.options.zoomWindowWidth / self.widthRatio );
         }
 
         self.lensStyle = 'background-position: 0 0;'
@@ -646,8 +646,6 @@ if ( typeof Object.create !== 'function' ) {
 
         // lens options
         if ( self.options.showLens ) {
-          // self.showHideLens("show");
-          // set background position of lens
           self.lensLeftPos = String( self.mouseLeft - self.zoomLens.width() / 2 );
           self.lensTopPos = String( self.mouseTop - self.zoomLens.height() / 2 );
         }
@@ -1580,7 +1578,7 @@ if ( typeof Object.create !== 'function' ) {
 
           if ( self.options.zoomType !== 'lens' && self.options.zoomType !== 'inner' ) {
             self.changeBgSize = true;
-            self.zoomLens.css( 'height', self.options.zoomWindowHeight / self.heightRatio );
+            self.zoomLens.css( 'height', String( self.options.zoomWindowHeight / self.heightRatio ) + 'px' );
           }
 
           if ( self.options.zoomType === 'lens' || self.options.zoomType === 'inner' ) {
@@ -1597,7 +1595,7 @@ if ( typeof Object.create !== 'function' ) {
 
           if ( self.options.zoomType !== 'lens' && self.options.zoomType !== 'inner' ) {
             self.changeBgSize = true;
-            self.zoomLens.css( 'width', self.options.zoomWindowWidth / self.widthRatio );
+            self.zoomLens.css( 'width', String( self.options.zoomWindowWidth / self.widthRatio ) + 'px' );
           }
 
           if ( self.options.zoomType === 'lens' || self.options.zoomType === 'inner') {

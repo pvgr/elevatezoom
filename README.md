@@ -9,11 +9,12 @@ Forked from elevateZoom, version 3.0.8
   - [x] Sort and cleanup settings
   - [x] Removed ID selector requirement for ”gallery”
 - [ ] Fix bugs / typos
+- [ ] Optimize multiple calls to indentical selectors, use variables if possible
 - [ ] Prevent multiple initializations
 - [ ] Add destroy method
+- [ ] Merge any useful features from other forks
 - [x] Optimize calls to CSS method
   - [ ] Move CSS settings to a CSS file, cleanup code
-  - [ ] Merge any useful features from other forks
 - [ ] Improve documentation with examples
 
 ### License

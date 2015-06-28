@@ -646,8 +646,8 @@ if ( typeof Object.create !== 'function' ) {
 
         // lens options
         if ( self.options.showLens ) {
-          self.lensLeftPos = String( self.mouseLeft - self.zoomLens.width() / 2 );
-          self.lensTopPos = String( self.mouseTop - self.zoomLens.height() / 2 );
+          self.lensLeftPos = String( Math.floor( self.mouseLeft - self.zoomLens.width() / 2 ) );
+          self.lensTopPos = String( Math.floor( self.mouseTop - self.zoomLens.height() / 2 ) );
         }
 
         // adjust the background position if the mouse is in one of the outer regions

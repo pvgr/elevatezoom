@@ -1429,18 +1429,10 @@ if ( typeof Object.create !== 'function' ) {
             img_src = $( this ).data( 'image' );
           }
 
-          // put the current image at the start
-          if ( img_src === self.zoomImage ) {
-            self.gallerylist.unshift( {
-              href: '' + img_src + '',
-              title: $( this ).find( 'img' ).attr( 'title' )
-            } );
-          } else {
-            self.gallerylist.push( {
-              href: '' + img_src + '',
-              title: $( this ).find( 'img' ).attr( 'title' )
-            } );
-          }
+          self.gallerylist.push( {
+            href: '' + img_src + '',
+            title: $( this ).find( 'img' ).attr( 'title' )
+          } );
         } );
       } else {
         //if no gallery - return current image

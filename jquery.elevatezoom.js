@@ -117,7 +117,7 @@ if ( typeof Object.create !== 'function' ) {
       self.overWindow = false;
 
       // CrossFade Wrap
-      if( self.options.imageCrossfade ) {
+      if ( self.options.imageCrossfade ) {
         self.zoomWrap = self.$elem.wrap( '<div style="height:' + self.nzHeight + 'px; width:' + self.nzWidth + 'px;" class="zoomWrapper" />' );
         self.$elem.css( 'position', 'absolute' );
       }
@@ -136,7 +136,7 @@ if ( typeof Object.create !== 'function' ) {
 
 
       // if window zoom
-      if( self.options.zoomType == 'window' ) {
+      if ( self.options.zoomType === 'window' ) {
         self.zoomWindowStyle = 'overflow: hidden;'
           + 'background-position: 0 0; text-align:center;'
           + 'background-color: ' + String( self.options.zoomWindowBgColour ) + ';'
@@ -144,14 +144,14 @@ if ( typeof Object.create !== 'function' ) {
           + 'height: ' + String( self.options.zoomWindowHeight ) + 'px;'
           + 'float: left;'
           + 'background-size: ' + self.largeWidth / self.currentZoomLevel + 'px ' + self.largeHeight / self.currentZoomLevel + 'px;'
-          + 'display: none; z-index:100;'
+          + 'display: none; z-index: 100;'
           + 'border: ' + String( self.options.borderSize ) + 'px solid ' + self.options.borderColour + ';'
           + 'background-repeat: no-repeat;'
           + 'position: absolute;';
       }
 
-      // if inner  zoom
-      if( self.options.zoomType == 'inner' ) {
+      // if inner zoom
+      if ( self.options.zoomType === 'inner' ) {
         // has a border been put on the image? Lets cater for this
         var borderWidth = self.$elem.css( 'border-left-width' );
 
@@ -170,15 +170,15 @@ if ( typeof Object.create !== 'function' ) {
       }
 
       // lens style for window zoom
-      if( self.options.zoomType == 'window' ) {
+      if ( self.options.zoomType === 'window' ) {
         // adjust images less than the window height
-        if( self.nzHeight < self.options.zoomWindowWidth / self.widthRatio ) {
+        if ( self.nzHeight < self.options.zoomWindowWidth / self.widthRatio ) {
           lensHeight = self.nzHeight;
         } else {
           lensHeight = String( self.options.zoomWindowHeight / self.heightRatio )
         }
 
-        if( self.largeWidth < self.options.zoomWindowWidth ) {
+        if ( self.largeWidth < self.options.zoomWindowWidth ) {
           lensWidth = self.nzWidth;
         } else {
           lensWidth = String( self.options.zoomWindowWidth / self.widthRatio );
@@ -207,7 +207,7 @@ if ( typeof Object.create !== 'function' ) {
 
       // lens style for lens zoom with optional round for modern browsers
       self.lensRound = '';
-      if ( self.options.zoomType == 'lens' ) {
+      if ( self.options.zoomType === 'lens' ) {
         self.lensStyle = 'background-position: 0 0;'
           + 'float: left; display: none;'
           + 'border: ' + String( self.options.borderSize ) + 'px solid ' + self.options.borderColour + ';'
@@ -217,7 +217,7 @@ if ( typeof Object.create !== 'function' ) {
       }
 
       // does not round in all browsers
-      if ( self.options.lensShape == 'round') {
+      if ( self.options.lensShape === 'round') {
         self.lensRound = 'border-top-left-radius: ' + String( self.options.lensSize / 2 + self.options.borderSize ) + 'px;'
           + 'border-top-right-radius: ' + String( self.options.lensSize / 2 + self.options.borderSize ) + 'px;'
           + 'border-bottom-left-radius: ' + String( self.options.lensSize / 2 + self.options.borderSize ) + 'px;'
@@ -228,12 +228,12 @@ if ( typeof Object.create !== 'function' ) {
       self.zoomContainer = $( '<div class="zoomContainer" style="position:absolute; left: ' + self.nzOffset.left + 'px; top: ' + self.nzOffset.top + 'px; height: ' + self.nzHeight + 'px; width: ' + self.nzWidth + 'px;"></div>' );
       $( 'body' ).append( self.zoomContainer );
 
-      // this will add overflow hidden and contrain the lens on lens mode
-      if ( self.options.containLensZoom && self.options.zoomType == 'lens' ) {
+      // this will add overflow hidden and contain the lens on lens mode
+      if ( self.options.containLensZoom && self.options.zoomType === 'lens' ) {
         self.zoomContainer.css( 'overflow', 'hidden' );
       }
 
-      if ( self.options.zoomType != 'inner' ) {
+      if ( self.options.zoomType !== 'inner' ) {
         self.zoomLens = $( '<div class="zoomLens" style="' + self.lensStyle + self.lensRound + '">&nbsp;</div>' )
             .appendTo( self.zoomContainer )
             .click( function () {
@@ -283,7 +283,7 @@ if ( typeof Object.create !== 'function' ) {
         self.zoomWindow.css( 'background-image', 'url("' + self.imageSrc + '")' );
       }
 
-      if ( self.options.zoomType == 'inner' ) {
+      if ( self.options.zoomType === 'inner' ) {
         self.zoomWindow.css( 'background-image', 'url("' + self.imageSrc + '")' );
       }
 
@@ -356,12 +356,12 @@ if ( typeof Object.create !== 'function' ) {
 
       // Needed to work in IE
       self.$elem.bind( 'mousemove', function( e ) {
-        if( self.overWindow == false ) {
+        if ( self.overWindow == false ) {
           self.setElements( 'show' );
         }
 
         // make sure on orientation change the setposition is not fired
-        if( self.lastX !== e.clientX || self.lastY !== e.clientY ) {
+        if ( self.lastX !== e.clientX || self.lastY !== e.clientY ) {
           self.setPosition( e );
           self.currentLoc = e;
         }
@@ -444,11 +444,6 @@ if ( typeof Object.create !== 'function' ) {
         } );
       }
 
-      // fix for initial zoom setting
-      if ( self.options.zoomLevel !== 1 ) {
-        //  self.changeZoomLevel(self.currentZoomLevel);
-      }
-
       // set the min zoomlevel
       if ( self.options.minZoomLevel ) {
         self.minZoomLevel = self.options.minZoomLevel;
@@ -469,9 +464,6 @@ if ( typeof Object.create !== 'function' ) {
           }, 250 ) );
 
           var theEvent = e.originalEvent.wheelDelta || e.originalEvent.detail * -1
-
-          // this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          // e.preventDefault();
 
           e.stopImmediatePropagation();
           e.stopPropagation();
@@ -544,13 +536,14 @@ if ( typeof Object.create !== 'function' ) {
       }
     },
 
-    setPosition: function(e) {
+    setPosition: function( e ) {
       var self = this;
+
       if ( !self.options.zoomEnabled ) {
         return false;
       }
 
-      // recaclc offset each time in case the image moves
+      // recalc offset each time in case the image moves
       // this can be caused by other on page elements
       self.nzHeight = self.$elem.height();
       self.nzWidth = self.$elem.width();
@@ -568,13 +561,13 @@ if ( typeof Object.create !== 'function' ) {
           if ( self.nzHeight < self.options.zoomWindowWidth / self.widthRatio ) {
             lensHeight = self.nzHeight;
           } else{
-            lensHeight = String( ( self.options.zoomWindowHeight / self.heightRatio ) );
+            lensHeight = String( self.options.zoomWindowHeight / self.heightRatio );
           }
 
           if ( self.largeWidth < self.options.zoomWindowWidth ) {
             lensWidth = self.nzWidth;
           } else {
-            lensWidth = self.options.zoomWindowWidth / self.widthRatio;
+            lensWidth = String( self.options.zoomWindowWidth / self.widthRatio );
           }
 
           self.widthRatio = self.largeWidth / self.nzWidth;
@@ -586,13 +579,13 @@ if ( typeof Object.create !== 'function' ) {
             if ( self.nzHeight < self.options.zoomWindowWidth / self.widthRatio ) {
               lensHeight = self.nzHeight;
             } else {
-              lensHeight = String( ( self.options.zoomWindowHeight / self.heightRatio ) );
+              lensHeight = String( self.options.zoomWindowHeight / self.heightRatio );
             }
 
             if ( self.options.zoomWindowWidth < self.options.zoomWindowWidth ) {
               lensWidth = self.nzWidth;
             } else {
-              lensWidth = self.options.zoomWindowWidth / self.widthRatio;
+              lensWidth = String (self.options.zoomWindowWidth / self.widthRatio);
             }
 
             self.zoomLens.css( 'width', lensWidth );
@@ -620,12 +613,11 @@ if ( typeof Object.create !== 'function' ) {
       self.mouseTop = parseInt( e.pageY - self.nzOffset.top );
 
       // calculate the Location of the Lens
-
       // calculate the bound regions - but only if zoom window
       if ( self.options.zoomType === 'window' ) {
         self.Etoppos = ( self.mouseTop < ( self.zoomLens.height() / 2 ) );
         self.Eboppos = ( self.mouseTop > self.nzHeight - ( self.zoomLens.height() / 2 ) - ( self.options.lensBorderSize * 2 ) );
-        self.Eloppos = ( self.mouseLeft < 0 + ( ( self.zoomLens.width() / 2 ) ) );
+        self.Eloppos = ( self.mouseLeft < 0 + ( self.zoomLens.width() / 2 ) );
         self.Eroppos = ( self.mouseLeft > ( self.nzWidth - ( self.zoomLens.width() / 2 ) - ( self.options.lensBorderSize * 2 ) ) );
       }
 
@@ -633,7 +625,7 @@ if ( typeof Object.create !== 'function' ) {
       if ( self.options.zoomType === 'inner' ) {
         self.Etoppos = ( self.mouseTop < ( ( self.nzHeight / 2 ) / self.heightRatio) );
         self.Eboppos = ( self.mouseTop > ( self.nzHeight - ( ( self.nzHeight / 2 ) / self.heightRatio ) ) );
-        self.Eloppos = ( self.mouseLeft < 0 + ( ( ( self.nzWidth / 2 ) / self.widthRatio ) ) );
+        self.Eloppos = ( self.mouseLeft < 0 + ( ( self.nzWidth / 2 ) / self.widthRatio ) );
         self.Eroppos = ( self.mouseLeft > ( self.nzWidth - ( self.nzWidth / 2 ) / self.widthRatio - ( self.options.lensBorderSize * 2 ) ) );
       }
 
@@ -651,7 +643,6 @@ if ( typeof Object.create !== 'function' ) {
         }
 
         // adjust the background position if the mouse is in one of the outer regions
-
         // Top region
         if ( self.Etoppos ) {
           self.lensTopPos = 0;
@@ -667,7 +658,7 @@ if ( typeof Object.create !== 'function' ) {
         // Set bottom and right region for window mode
         if ( self.options.zoomType === 'window' ) {
           if ( self.Eboppos ) {
-            self.lensTopPos = Math.max( ( self.nzHeight ) - self.zoomLens.height() - ( self.options.lensBorderSize * 2 ), 0 );
+            self.lensTopPos = Math.max( self.nzHeight - self.zoomLens.height() - ( self.options.lensBorderSize * 2 ), 0 );
           }
 
           if ( self.Eroppos ) {
@@ -678,18 +669,18 @@ if ( typeof Object.create !== 'function' ) {
         // Set bottom and right region for inner mode
         if ( self.options.zoomType === 'inner' ) {
           if ( self.Eboppos ) {
-            self.lensTopPos = Math.max( ( ( self.nzHeight ) - ( self.options.lensBorderSize * 2 ) ), 0 );
+            self.lensTopPos = Math.max( ( self.nzHeight - ( self.options.lensBorderSize * 2 ) ), 0 );
           }
 
           if ( self.Eroppos ) {
-            self.lensLeftPos = ( self.nzWidth - ( self.nzWidth ) - ( self.options.lensBorderSize * 2 ) );
+            self.lensLeftPos = ( self.nzWidth - self.nzWidth - ( self.options.lensBorderSize * 2 ) );
           }
         }
 
         // if lens zoom
         if ( self.options.zoomType === 'lens' ) {
-          self.windowLeftPos = String( ( ( e.pageX - self.nzOffset.left ) * self.widthRatio - self.zoomLens.width() / 2 ) * ( -1 ) );
-          self.windowTopPos = String( ( ( e.pageY - self.nzOffset.top ) * self.heightRatio - self.zoomLens.height() / 2 ) * ( -1 ) );
+          self.windowLeftPos = String( ( ( e.pageX - self.nzOffset.left ) * self.widthRatio - self.zoomLens.width() / 2 ) * -1 );
+          self.windowTopPos = String( ( ( e.pageY - self.nzOffset.top ) * self.heightRatio - self.zoomLens.height() / 2 ) * -1 );
 
           self.zoomLens.css( 'background-position', self.windowLeftPos + 'px ' + self.windowTopPos + 'px' );
 
@@ -714,7 +705,6 @@ if ( typeof Object.create !== 'function' ) {
         // if tint zoom
         if ( self.options.tint && self.options.zoomType !== 'inner' ) {
           self.setTintPosition( e );
-
         }
 
         // set the css background position
@@ -831,21 +821,21 @@ if ( typeof Object.create !== 'function' ) {
       if ( !isNaN( self.options.zoomWindowPosition ) ) {
         switch ( self.options.zoomWindowPosition ) {
         case 1:
-          self.windowOffsetTop = ( self.options.zoomWindowOffety );                                               // DONE - 1
-          self.windowOffsetLeft = ( + self.nzWidth );                                                             // DONE 1, 2, 3, 4, 16
+          self.windowOffsetTop = self.options.zoomWindowOffety;                                                  // DONE - 1
+          self.windowOffsetLeft = self.nzWidth;                                                                  // DONE 1, 2, 3, 4, 16
           break;
 
         case 2:
           if ( self.options.zoomWindowHeight > self.nzHeight ) {                                                  // positive margin
-            self.windowOffsetTop = ( ( self.options.zoomWindowHeight / 2 ) - ( self.nzHeight / 2 ) ) * ( -1 );
-            self.windowOffsetLeft = ( self.nzWidth );                                                             // DONE 1, 2, 3, 4, 16
+            self.windowOffsetTop = ( ( self.options.zoomWindowHeight / 2 ) - ( self.nzHeight / 2 ) ) * -1;
+            self.windowOffsetLeft = self.nzWidth;                                                                 // DONE 1, 2, 3, 4, 16
           } else {                                                                                                // negative margin
           }
           break;
 
         case 3:
           self.windowOffsetTop = ( self.nzHeight - self.zoomWindow.height() - ( self.options.borderSize * 2 ) );  // DONE 3,9
-          self.windowOffsetLeft = ( self.nzWidth );                                                               // DONE 1, 2, 3, 4, 16
+          self.windowOffsetLeft = self.nzWidth;                                                                   // DONE 1, 2, 3, 4, 16
           break;
 
         case 4:
@@ -861,7 +851,7 @@ if ( typeof Object.create !== 'function' ) {
         case 6:
           if ( self.options.zoomWindowHeight > self.nzHeight ) {                                                  // positive margin
             self.windowOffsetTop = self.nzHeight;                                                                 // DONE - 4,5,6,7,8
-            self.windowOffsetLeft = ( ( self.options.zoomWindowWidth / 2 ) - ( self.nzWidth / 2 ) + ( self.options.borderSize * 2 ) ) * ( -1 );
+            self.windowOffsetLeft = ( ( self.options.zoomWindowWidth / 2 ) - ( self.nzWidth / 2 ) + ( self.options.borderSize * 2 ) ) * -1;
           } else {                                                                                                // negative margin
           }
           break;
@@ -873,52 +863,52 @@ if ( typeof Object.create !== 'function' ) {
 
         case 8:
           self.windowOffsetTop = self.nzHeight;                                                                   // DONE - 4,5,6,7,8
-          self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * ( -1 );         // DONE 8,9,10,11,12
+          self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 8,9,10,11,12
           break;
 
         case 9:
           self.windowOffsetTop = ( self.nzHeight - self.zoomWindow.height() - ( self.options.borderSize * 2 ) );  // DONE 3,9
-          self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * ( -1 );         // DONE 8,9,10,11,12
+          self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 8,9,10,11,12
           break;
 
         case 10:
           if ( self.options.zoomWindowHeight > self.nzHeight ) {                                                  // positive margin
-            self.windowOffsetTop = ( ( self.options.zoomWindowHeight / 2 ) - ( self.nzHeight / 2 ) ) * ( -1 );
-            self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * ( -1 );       // DONE 8,9,10,11,12
+            self.windowOffsetTop = ( ( self.options.zoomWindowHeight / 2 ) - ( self.nzHeight / 2 ) ) * -1;
+            self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * -1;           // DONE 8,9,10,11,12
           } else {                                                                                                // negative margin
           }
           break;
 
         case 11:
           self.windowOffsetTop = self.options.zoomWindowOffety;
-          self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * ( -1 );         // DONE 8,9,10,11,12
+          self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 8,9,10,11,12
           break;
 
         case 12:
-          self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * ( -1 );         // DONE 12,13,14,15,16
-          self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * ( -1 );         // DONE 8,9,10,11,12
+          self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 12,13,14,15,16
+          self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 8,9,10,11,12
           break;
 
         case 13:
-          self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * ( -1 );         // DONE 12,13,14,15,16
+          self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 12,13,14,15,16
           self.windowOffsetLeft = 0;                                                                              // DONE 7, 13
           break;
 
         case 14:
           if ( self.options.zoomWindowHeight > self.nzHeight ) {                                                  // positive margin
-            self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * ( -1 );       // DONE 12,13,14,15,16
-            self.windowOffsetLeft = ( ( self.options.zoomWindowWidth / 2 ) - ( self.nzWidth / 2 ) + ( self.options.borderSize * 2 ) ) * ( -1 );
+            self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * -1;           // DONE 12,13,14,15,16
+            self.windowOffsetLeft = ( ( self.options.zoomWindowWidth / 2 ) - ( self.nzWidth / 2 ) + ( self.options.borderSize * 2 ) ) * -1;
           } else {                                                                                                // negative margin}
           }
           break;
 
         case 15:
-          self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * ( -1 );         // DONE 12,13,14,15,16
+          self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 12,13,14,15,16
           self.windowOffsetLeft = ( self.nzWidth - self.zoomWindow.width() - ( self.options.borderSize * 2 ) );   // DONE - 5,15
           break;
 
         case 16:
-          self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * ( -1 );         // DONE 12,13,14,15,16
+          self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 12,13,14,15,16
           self.windowOffsetLeft = self.nzWidth;                                                                   // DONE 1, 2, 3, 4, 16
           break;
 
@@ -949,8 +939,8 @@ if ( typeof Object.create !== 'function' ) {
         self.zoomWindow.css( 'left', 0 );
       }
 
-      self.windowLeftPos = String( ( ( e.pageX - self.nzOffset.left ) * self.widthRatio - self.zoomWindow.width() / 2 ) * ( -1 ) );
-      self.windowTopPos = String( ( ( e.pageY - self.nzOffset.top ) * self.heightRatio - self.zoomWindow.height() / 2 ) * ( -1 ) );
+      self.windowLeftPos = String( ( ( e.pageX - self.nzOffset.left ) * self.widthRatio - self.zoomWindow.width() / 2 ) * -1 );
+      self.windowTopPos = String( ( ( e.pageY - self.nzOffset.top ) * self.heightRatio - self.zoomWindow.height() / 2 ) * -1 );
 
       if ( self.Etoppos ) {
         self.windowTopPos = 0;
@@ -961,11 +951,11 @@ if ( typeof Object.create !== 'function' ) {
       }
 
       if ( self.Eboppos ) {
-        self.windowTopPos = ( self.largeHeight / self.currentZoomLevel-self.zoomWindow.height() ) * ( -1 );
+        self.windowTopPos = ( self.largeHeight / self.currentZoomLevel-self.zoomWindow.height() ) * -1;
       }
 
       if ( self.Eroppos ) {
-        self.windowLeftPos = ( ( self.largeWidth / self.currentZoomLevel - self.zoomWindow.width() ) * ( -1 ) );
+        self.windowLeftPos = ( ( self.largeWidth / self.currentZoomLevel - self.zoomWindow.width() ) * -1 );
       }
 
       // stops micro movements
@@ -1001,13 +991,6 @@ if ( typeof Object.create !== 'function' ) {
 
         // set the zoomwindow background position
         if ( self.options.easing ) {
-
-          //     if(self.changeZoom){
-          //           clearInterval(self.loop);
-          //           self.changeZoom = false;
-          //           self.loop = false;
-          //            }
-
           // set the pos to 0 if not set
           if ( !self.xp ) {
             self.xp = 0;
@@ -1030,8 +1013,8 @@ if ( typeof Object.create !== 'function' ) {
                 self.xp = self.windowLeftPos;
                 self.yp = self.windowTopPos
 
-                self.xp = ( ( e.pageX - self.nzOffset.left ) * self.widthRatio - self.zoomWindow.width() / 2 ) * ( -1 );
-                self.yp = ( ( ( e.pageY - self.nzOffset.top ) * self.heightRatio - self.zoomWindow.height() / 2 ) * ( -1 ) );
+                self.xp = ( ( e.pageX - self.nzOffset.left ) * self.widthRatio - self.zoomWindow.width() / 2 ) * -1;
+                self.yp = ( ( ( e.pageY - self.nzOffset.top ) * self.heightRatio - self.zoomWindow.height() / 2 ) * -1 );
 
                 if ( self.changeBgSize ) {
                   if ( self.nzHeight > self.nzWidth ) {
@@ -1045,18 +1028,6 @@ if ( typeof Object.create !== 'function' ) {
                     }
                     self.zoomWindow.css( 'background-size', self.largeWidth / self.newvaluewidth + 'px ' + self.largeHeight / self.newvaluewidth + 'px' );
                   }
-
-            /*
-           if(!self.bgxp){self.bgxp = self.largeWidth/self.newvalue;}
-          if(!self.bgyp){self.bgyp = self.largeHeight/self.newvalue ;}
-               if (!self.bgloop){
-                self.bgloop = setInterval(function(){
-               self.bgxp += (self.largeWidth/self.newvalue  - self.bgxp) / self.options.easingAmount;
-              self.bgyp += (self.largeHeight/self.newvalue  - self.bgyp) / self.options.easingAmount;
-         self.zoomWindow.css({ 'background-size': self.bgxp + 'px ' + self.bgyp + 'px' });
-                }, 16);
-               }
-                   */
 
                   self.changeBgSize = false;
                 }
@@ -1113,8 +1084,8 @@ if ( typeof Object.create !== 'function' ) {
       var self = this;
 
       self.nzOffset = self.$elem.offset();
-      self.tintpos = String( ( ( e.pageX - self.nzOffset.left ) - ( self.zoomLens.width() / 2 ) ) * ( -1 ) );
-      self.tintposy = String( ( ( e.pageY - self.nzOffset.top ) - ( self.zoomLens.height() / 2 ) ) * ( -1 ) );
+      self.tintpos = String( ( ( e.pageX - self.nzOffset.left ) - ( self.zoomLens.width() / 2 ) ) * -1 );
+      self.tintposy = String( ( ( e.pageY - self.nzOffset.top ) - ( self.zoomLens.height() / 2 ) ) * -1 );
 
       if ( self.Etoppos ) {
         self.tintposy = 0;
@@ -1125,11 +1096,11 @@ if ( typeof Object.create !== 'function' ) {
       }
 
       if ( self.Eboppos ) {
-        self.tintposy = ( self.nzHeight - self.zoomLens.height() - ( self.options.lensBorderSize * 2 ) ) * ( -1 );
+        self.tintposy = ( self.nzHeight - self.zoomLens.height() - ( self.options.lensBorderSize * 2 ) ) * -1;
       }
 
       if ( self.Eroppos ) {
-        self.tintpos = ( ( self.nzWidth - self.zoomLens.width() - ( self.options.lensBorderSize * 2 ) ) * ( -1 ) );
+        self.tintpos = ( ( self.nzWidth - self.zoomLens.width() - ( self.options.lensBorderSize * 2 ) ) * -1 );
       }
 
       if ( self.options.tint ) {
@@ -1192,8 +1163,6 @@ if ( typeof Object.create !== 'function' ) {
       self.currentZoomLevel = self.options.zoomLevel;
       self.options.maxZoomLevel = false;
 
-      // swaps the main image
-      // self.$elem.attr("src",smallimage);
       // swaps the zoom image
       if ( self.options.zoomType === 'lens' ) {
         self.zoomLens.css( 'background-image', "url('" + largeimage + "')" );
@@ -1220,11 +1189,9 @@ if ( typeof Object.create !== 'function' ) {
           $( this ).remove();
         } );
 
-        // if(self.options.zoomType == 'inner'){
         // remove any attributes on the cloned image so we can resize later
         self.$elem.width( 'auto' ).removeAttr( 'width' );
         self.$elem.height( 'auto' ).removeAttr( 'height' );
-        // }
 
         oldImg.fadeIn( self.options.imageCrossfade );
 
@@ -1240,8 +1207,6 @@ if ( typeof Object.create !== 'function' ) {
           } );
 
           oldImgTint.fadeIn( self.options.imageCrossfade );
-
-          // self.zoomTintImage.attr('width',elem.data("image"));
 
           // resize the tint window
           self.zoomTint.css( 'height',  self.$elem.height() );
@@ -1270,11 +1235,7 @@ if ( typeof Object.create !== 'function' ) {
 
         if ( self.options.tint ) {
           self.zoomTintImage.attr( 'src', largeimage );
-
-          // self.zoomTintImage.attr('width',elem.data("image"));
           self.zoomTintImage.attr( 'height', self.$elem.height() );
-
-          // self.zoomTintImage.attr('src') = elem.data("image");
           self.zoomTintImage.css( 'height', self.$elem.height() );
           self.zoomTint.css( 'height', self.$elem.height() );
         }
@@ -1378,13 +1339,13 @@ if ( typeof Object.create !== 'function' ) {
         if ( self.nzHeight < self.options.zoomWindowWidth / self.widthRatio ) {
           lensHeight = self.nzHeight;
         } else {
-          lensHeight = String( ( self.options.zoomWindowHeight / self.heightRatio ) );
+          lensHeight = String( self.options.zoomWindowHeight / self.heightRatio );
         }
 
         if ( self.options.zoomWindowWidth < self.options.zoomWindowWidth ) {
           lensWidth = self.nzWidth;
         } else {
-          lensWidth = self.options.zoomWindowWidth / self.widthRatio;
+          lensWidth = String( self.options.zoomWindowWidth / self.widthRatio );
         }
 
         if ( self.zoomLens ) {

@@ -70,6 +70,8 @@ if ( typeof Object.create !== 'function' ) {
         self.swaptheimage( $( this ).data( 'image' ), self.zoomImagePre );
         return false;
       } );
+
+      setTimeout( function(){ self.options.onComplete( self.$elem ); }, 300 );
     },
 
     refresh: function( length ) {
@@ -1151,7 +1153,7 @@ if ( typeof Object.create !== 'function' ) {
         self.zoomImage = largeimage;
         self.zoomWindow.css( 'background-size', self.largeWidth + 'px ' + self.largeHeight + 'px' );
 
-        self.swapAction(smallimage, largeimage);
+        self.swapAction( smallimage, largeimage );
         return;
       }
 
@@ -1714,7 +1716,7 @@ if ( typeof Object.create !== 'function' ) {
     zoomWindowFadeIn: false,
     zoomWindowFadeOut: false,
     zoomWindowAlwaysShow: false,
-    onComplete: $.noop,
+    onComplete: function() {},
     onImageSwap: $.noop,
     onImageSwapComplete: function() {},
     onZoomedImageLoaded: function() {}

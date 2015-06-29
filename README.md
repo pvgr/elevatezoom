@@ -1,7 +1,6 @@
 # elevateZoom - A jQuery image zoom plugin
 
-Forked from elevateZoom, version 3.0.8
-[elevateZoom](http://www.elevateweb.co.uk/image-zoom/)
+Forked from [elevateZoom](http://www.elevateweb.co.uk/image-zoom/), version 3.0.8
 
 ## TODO
 - [x] Normalize white space, code format

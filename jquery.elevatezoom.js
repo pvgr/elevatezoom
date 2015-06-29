@@ -750,6 +750,13 @@ if ( typeof Object.create !== 'function' ) {
         if ( self.isWindowActive ) {
           if ( self.options.zoomWindowFadeOut ) {
             self.zoomWindow.stop( true, true ).fadeOut( self.options.zoomWindowFadeOut );
+            self.zoomWindow.stop( true, true ).fadeOut( self.options.zoomWindowFadeOut, function () {
+              if ( self.loop ) {
+                // stop moving the zoom window when zoom window is faded out
+                clearInterval( self.loop );
+                self.loop = false;
+              }
+            } );
           } else { self.zoomWindow.hide(); }
 
           self.isWindowActive = false;
@@ -986,12 +993,14 @@ if ( typeof Object.create !== 'function' ) {
         }
 
         // adjust images less than the window height
-        if ( self.largeHeight < self.options.zoomWindowHeight ) {
-          self.windowTopPos = 0;
-        }
+        if ( self.options.zoomType === 'window' ) {
+          if ( self.largeHeight < self.options.zoomWindowHeight ) {
+            self.windowTopPos = 0;
+          }
 
-        if ( self.largeWidth < self.options.zoomWindowWidth ) {
-          self.windowLeftPos = 0;
+          if ( self.largeWidth < self.options.zoomWindowWidth ) {
+            self.windowLeftPos = 0;
+          }
         }
 
         // set the zoomwindow background position

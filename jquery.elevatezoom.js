@@ -831,100 +831,97 @@ if ( typeof Object.create !== 'function' ) {
 
       if ( !isNaN( self.options.zoomWindowPosition ) ) {
         switch ( self.options.zoomWindowPosition ) {
-          case 1: //done
-            self.windowOffsetTop = (self.options.zoomWindowOffety);//DONE - 1
-            self.windowOffsetLeft =(+self.nzWidth); //DONE 1, 2, 3, 4, 16
+          case 1:
+            self.windowOffsetTop = self.options.zoomWindowOffety;                                                   // DONE - 1
+            self.windowOffsetLeft = ( + self.nzWidth );                                                             // DONE 1, 2, 3, 4, 16
             break;
+
           case 2:
-            if(self.options.zoomWindowHeight > self.nzHeight){ //positive margin
-
-              self.windowOffsetTop = ((self.options.zoomWindowHeight/2)-(self.nzHeight/2))*(-1);
-              self.windowOffsetLeft =(self.nzWidth); //DONE 1, 2, 3, 4, 16
-            }
-            else{ //negative margin
-
+            if ( self.options.zoomWindowHeight > self.nzHeight ) {                                                  // positive margin
+              self.windowOffsetTop = ( ( self.options.zoomWindowHeight / 2 ) - ( self.nzHeight / 2 ) ) * -1;
+              self.windowOffsetLeft = self.nzWidth;                                                                 // DONE 1, 2, 3, 4, 16
             }
             break;
-          case 3: //done
-            self.windowOffsetTop = (self.nzHeight - self.zoomWindow.height() - (self.options.borderSize*2)); //DONE 3,9
-            self.windowOffsetLeft =(self.nzWidth); //DONE 1, 2, 3, 4, 16
+
+          case 3:
+            self.windowOffsetTop = ( self.nzHeight - self.zoomWindow.height() - ( self.options.borderSize * 2 ) );  // DONE 3,9
+            self.windowOffsetLeft = self.nzWidth;                                                                   // DONE 1, 2, 3, 4, 16
             break;
-          case 4: //done
-            self.windowOffsetTop = (self.nzHeight); //DONE - 4,5,6,7,8
-            self.windowOffsetLeft =(self.nzWidth); //DONE 1, 2, 3, 4, 16
+
+          case 4:
+            self.windowOffsetTop = self.nzHeight;                                                                   // DONE - 4,5,6,7,8
+            self.windowOffsetLeft = self.nzWidth;                                                                   // DONE 1, 2, 3, 4, 16
             break;
-          case 5: //done
-            self.windowOffsetTop = (self.nzHeight); //DONE - 4,5,6,7,8
-            self.windowOffsetLeft =(self.nzWidth-self.zoomWindow.width()-(self.options.borderSize*2)); //DONE - 5,15
+
+          case 5:
+            self.windowOffsetTop = self.nzHeight;                                                                   // DONE - 4,5,6,7,8
+            self.windowOffsetLeft = ( self.nzWidth-self.zoomWindow.width() - ( self.options.borderSize * 2 ) );     // DONE - 5,15
             break;
+
           case 6:
-            if(self.options.zoomWindowHeight > self.nzHeight){ //positive margin
-              self.windowOffsetTop = (self.nzHeight);  //DONE - 4,5,6,7,8
-
-              self.windowOffsetLeft =((self.options.zoomWindowWidth/2)-(self.nzWidth/2)+(self.options.borderSize*2))*(-1);
+            if ( self.options.zoomWindowHeight > self.nzHeight ) {                                                  // positive margin
+              self.windowOffsetTop = self.nzHeight;                                                                 // DONE - 4,5,6,7,8
+              self.windowOffsetLeft = ( ( self.options.zoomWindowWidth / 2 ) - ( self.nzWidth / 2 ) + ( self.options.borderSize * 2 ) ) * -1;
             }
-            else{ //negative margin
+            break;
 
-            }
+          case 7:
+            self.windowOffsetTop = self.nzHeight;                                                                   // DONE - 4,5,6,7,8
+            self.windowOffsetLeft = 0;                                                                              // DONE 7, 13
+            break;
 
+          case 8:
+            self.windowOffsetTop = self.nzHeight;                                                                   // DONE - 4,5,6,7,8
+            self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 8,9,10,11,12
+            break;
 
+          case 9:
+            self.windowOffsetTop = ( self.nzHeight - self.zoomWindow.height() - ( self.options.borderSize * 2 ) );  // DONE 3,9
+            self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 8,9,10,11,12
             break;
-          case 7: //done
-            self.windowOffsetTop = (self.nzHeight);  //DONE - 4,5,6,7,8
-            self.windowOffsetLeft = 0; //DONE 7, 13
-            break;
-          case 8: //done
-            self.windowOffsetTop = (self.nzHeight); //DONE - 4,5,6,7,8
-            self.windowOffsetLeft =(self.zoomWindow.width()+(self.options.borderSize*2) )* (-1);  //DONE 8,9,10,11,12
-            break;
-          case 9:  //done
-            self.windowOffsetTop = (self.nzHeight - self.zoomWindow.height() - (self.options.borderSize*2)); //DONE 3,9
-            self.windowOffsetLeft =(self.zoomWindow.width()+(self.options.borderSize*2) )* (-1);  //DONE 8,9,10,11,12
-            break;
+
           case 10:
-            if(self.options.zoomWindowHeight > self.nzHeight){ //positive margin
-
-              self.windowOffsetTop = ((self.options.zoomWindowHeight/2)-(self.nzHeight/2))*(-1);
-              self.windowOffsetLeft =(self.zoomWindow.width()+(self.options.borderSize*2) )* (-1);  //DONE 8,9,10,11,12
-            }
-            else{ //negative margin
-
+            if ( self.options.zoomWindowHeight > self.nzHeight ) {
+              self.windowOffsetTop = ( ( self.options.zoomWindowHeight / 2 ) - ( self.nzHeight / 2 ) ) * -1;
+              self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * -1;           // DONE 8,9,10,11,12
             }
             break;
+
           case 11:
-            self.windowOffsetTop = (self.options.zoomWindowOffety);
-            self.windowOffsetLeft =(self.zoomWindow.width()+(self.options.borderSize*2) )* (-1);  //DONE 8,9,10,11,12
+            self.windowOffsetTop = ( self.options.zoomWindowOffety );
+            self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 8,9,10,11,12
             break;
-          case 12: //done
-            self.windowOffsetTop = (self.zoomWindow.height()+(self.options.borderSize*2))*(-1); //DONE 12,13,14,15,16
-            self.windowOffsetLeft =(self.zoomWindow.width()+(self.options.borderSize*2) )* (-1);  //DONE 8,9,10,11,12
+
+          case 12:
+            self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 12,13,14,15,16
+            self.windowOffsetLeft = ( self.zoomWindow.width() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 8,9,10,11,12
             break;
-          case 13: //done
-            self.windowOffsetTop = (self.zoomWindow.height()+(self.options.borderSize*2))*(-1); //DONE 12,13,14,15,16
-            self.windowOffsetLeft =(0); //DONE 7, 13
+
+          case 13:
+            self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 12,13,14,15,16
+            self.windowOffsetLeft = 0;                                                                              // DONE 7, 13
             break;
+
           case 14:
-            if(self.options.zoomWindowHeight > self.nzHeight){ //positive margin
-              self.windowOffsetTop = (self.zoomWindow.height()+(self.options.borderSize*2))*(-1); //DONE 12,13,14,15,16
-
-              self.windowOffsetLeft =((self.options.zoomWindowWidth/2)-(self.nzWidth/2)+(self.options.borderSize*2))*(-1);
+            if ( self.options.zoomWindowHeight > self.nzHeight ) {
+              self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * -1;           // DONE 12,13,14,15,16
+              self.windowOffsetLeft = ( ( self.options.zoomWindowWidth / 2 ) - ( self.nzWidth / 2 ) + ( self.options.borderSize * 2 ) ) * -1;
             }
-            else{ //negative margin
+            break;
 
-            }
+          case 15:
+            self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 12,13,14,15,16
+            self.windowOffsetLeft = ( self.nzWidth-self.zoomWindow.width() - ( self.options.borderSize * 2 ) );     // DONE - 5,15
+            break;
 
+          case 16:
+            self.windowOffsetTop = ( self.zoomWindow.height() + ( self.options.borderSize * 2 ) ) * -1;             // DONE 12,13,14,15,16
+            self.windowOffsetLeft = self.nzWidth;                                                                   // DONE 1, 2, 3, 4, 16
             break;
-          case 15://done
-            self.windowOffsetTop = (self.zoomWindow.height()+(self.options.borderSize*2))*(-1); //DONE 12,13,14,15,16
-            self.windowOffsetLeft =(self.nzWidth-self.zoomWindow.width()-(self.options.borderSize*2)); //DONE - 5,15
-            break;
-          case 16:  //done
-            self.windowOffsetTop = (self.zoomWindow.height()+(self.options.borderSize*2))*(-1); //DONE 12,13,14,15,16
-            self.windowOffsetLeft =(self.nzWidth); //DONE 1, 2, 3, 4, 16
-            break;
-          default: //done
-            self.windowOffsetTop = (self.options.zoomWindowOffety);//DONE - 1
-          self.windowOffsetLeft =(self.nzWidth); //DONE 1, 2, 3, 4, 16
+
+          default:
+            self.windowOffsetTop = self.options.zoomWindowOffety;                                                   // DONE - 1
+            self.windowOffsetLeft = self.nzWidth;                                                                   // DONE 1, 2, 3, 4, 16
         }
       } else {
         // WE CAN POSITION IN A CLASS - ASSUME THAT ANY STRING PASSED IS

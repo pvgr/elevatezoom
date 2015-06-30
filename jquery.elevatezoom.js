@@ -138,15 +138,9 @@ if ( typeof Object.create !== 'function' ) {
 
       // if window zoom
       if ( self.options.zoomType === 'window' ) {
-        self.zoomWindowStyle = 'overflow: hidden;'
-          + 'background-position: 0 0; text-align:center;'
-          + 'width: ' + String( self.options.zoomWindowWidth ) + 'px;'
+        self.zoomWindowStyle = 'width: ' + String( self.options.zoomWindowWidth ) + 'px;'
           + 'height: ' + String( self.options.zoomWindowHeight ) + 'px;'
-          + 'float: left;'
-          + 'background-size: ' + self.largeWidth / self.currentZoomLevel + 'px ' + self.largeHeight / self.currentZoomLevel + 'px;'
-          + 'display: none;'
-          + 'background-repeat: no-repeat;'
-          + 'position: absolute;';
+          + 'background-size: ' + self.largeWidth / self.currentZoomLevel + 'px ' + self.largeHeight / self.currentZoomLevel + 'px;';
       }
 
       // if inner zoom
@@ -154,16 +148,10 @@ if ( typeof Object.create !== 'function' ) {
         // has a border been put on the image? Lets cater for this
         var borderWidth = self.$elem.css( 'border-left-width' );
 
-        self.zoomWindowStyle = 'overflow: hidden;'
-          + 'margin-left: ' + String( borderWidth ) + ';'
+        self.zoomWindowStyle = 'margin-left: ' + String( borderWidth ) + ';'
           + 'margin-top: ' + String( borderWidth ) + ';'
-          + 'background-position: 0 0;'
           + 'width: ' + String( self.nzWidth ) + 'px;'
-          + 'height: ' + String( self.nzHeight ) + 'px;'
-          + 'float: left;'
-          + 'display: none;'
-          + 'background-repeat: no-repeat;'
-          + 'position: absolute;';
+          + 'height: ' + String( self.nzHeight ) + 'px;';
       }
 
       // lens style for window zoom
@@ -181,43 +169,31 @@ if ( typeof Object.create !== 'function' ) {
           lensWidth = String( self.options.zoomWindowWidth / self.widthRatio );
         }
 
-        self.lensStyle = 'background-position: 0 0;'
-          + 'width: ' + String( ( self.options.zoomWindowWidth ) / self.widthRatio ) + 'px;'
-          + 'height: ' + String( ( self.options.zoomWindowHeight ) / self.heightRatio ) + 'px;'
-          + 'float: right; display: none; overflow: hidden;'
-          + 'width: ' + lensWidth + 'px;'
+        self.lensStyle = 'width: ' + lensWidth + 'px;'
           + 'height: ' + lensHeight + 'px;'
-          + 'background-color: ' + ( self.options.lensColour ) + ';'
-          + 'background-repeat: no-repeat; position: absolute;';
+          + 'background-color: ' + ( self.options.lensColour ) + ';';
       }
 
       // tint style
       self.tintStyle = 'display: block;'
-        + 'position: absolute;'
-        + 'opacity: 0;'
         + 'width: ' + self.nzWidth + 'px;'
         + 'height: ' + self.nzHeight + 'px;';
 
       // lens style for lens zoom with optional round for modern browsers
       self.lensRound = '';
       if ( self.options.zoomType === 'lens' ) {
-        self.lensStyle = 'background-position: 0 0;'
-          + 'display: none;'
-          + 'width: ' + String( self.options.lensSize ) + 'px;'
+        self.lensStyle = 'width: ' + String( self.options.lensSize ) + 'px;'
           + 'height: ' + String( self.options.lensSize ) + 'px;'
-          + 'background-repeat: no-repeat; position: absolute; opacity: 1;';
+          + 'opacity: 1;';
       }
 
       // does not round in all browsers
       if ( self.options.lensShape === 'round') {
-        self.lensRound = 'border-top-left-radius: ' + String( self.options.lensSize / 2 + self.options.borderSize ) + 'px;'
-          + 'border-top-right-radius: ' + String( self.options.lensSize / 2 + self.options.borderSize ) + 'px;'
-          + 'border-bottom-left-radius: ' + String( self.options.lensSize / 2 + self.options.borderSize ) + 'px;'
-          + 'border-bottom-right-radius: ' + String( self.options.lensSize / 2 + self.options.borderSize ) + 'px;';
+        self.lensRound = 'border-radius: ' + String( self.options.lensSize / 2 + self.options.borderSize ) + 'px;';
       }
 
       // create the div's
-      self.zoomContainer = $( '<div class="zoomContainer" style="position:absolute; left: ' + self.nzOffset.left + 'px; top: ' + self.nzOffset.top + 'px; height: ' + self.nzHeight + 'px; width: ' + self.nzWidth + 'px;"></div>' );
+      self.zoomContainer = $( '<div class="zoomContainer" style="left: ' + self.nzOffset.left + 'px; top: ' + self.nzOffset.top + 'px; height: ' + self.nzHeight + 'px; width: ' + self.nzWidth + 'px;"></div>' );
       $( 'body' ).append( self.zoomContainer );
 
       // this will add overflow hidden and contain the lens on lens mode

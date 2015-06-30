@@ -11,25 +11,40 @@
  *  http://en.wikipedia.org/wiki/GNU_General_Public_License
  */
 
+.zoomContainer {
+	position: absolute;
+}
+
 .zoomLens {
+	background: 0 0 no-repeat;
 	border-color: #000;
 	border-style: solid;
 	border-width: 1px;
  	cursor: move;
  	display: none;
+ 	float: right;
  	opacity: .4;
+ 	overflow: hidden;
+ 	position: absolute;
  	z-index: 100;
 }
 
 .zoomTint {
 	background: #333;
+	display: none;
+	position: absolute;
+	opacity: 0;
 }
 
 .zoomWindow {
-	background-color: #fff;
+	background: #fff 0 0 no-repeat;
 	border-color: #888;
 	border-style: solid;
 	border-width: 4px;
 	display: none;
+	float: left;
+	overflow: hidden;
+	position: absolute;
 	z-index: 101;
+	text-align: center;
 }

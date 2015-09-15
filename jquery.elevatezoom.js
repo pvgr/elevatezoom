@@ -158,19 +158,19 @@ if ( typeof Object.create !== 'function' ) {
       if ( self.options.zoomType === 'window' ) {
         // adjust images less than the window height
         if ( self.nzHeight < self.options.zoomWindowWidth / self.widthRatio ) {
-          lensHeight = self.nzHeight;
+          self.lensHeight = self.nzHeight;
         } else {
-          lensHeight = String( self.options.zoomWindowHeight / self.heightRatio )
+          self.lensHeight = String( self.options.zoomWindowHeight / self.heightRatio )
         }
 
         if ( self.largeWidth < self.options.zoomWindowWidth ) {
-          lensWidth = self.nzWidth;
+          self.lensWidth = self.nzWidth;
         } else {
-          lensWidth = String( self.options.zoomWindowWidth / self.widthRatio );
+          self.lensWidth = String( self.options.zoomWindowWidth / self.widthRatio );
         }
 
-        self.lensStyle = 'width: ' + lensWidth + 'px;'
-          + 'height: ' + lensHeight + 'px;'
+        self.lensStyle = 'width: ' + self.lensWidth + 'px;'
+          + 'height: ' + self.lensHeight + 'px;'
           + 'background-color: ' + ( self.options.lensColour ) + ';';
       }
 
@@ -532,15 +532,15 @@ if ( typeof Object.create !== 'function' ) {
       if ( self.options.responsive && !self.options.scrollZoom ) {
         if ( self.options.showLens ) {
           if ( self.nzHeight < self.options.zoomWindowWidth / self.widthRatio ) {
-            lensHeight = self.nzHeight;
+            self.lensHeight = self.nzHeight;
           } else{
-            lensHeight = String( self.options.zoomWindowHeight / self.heightRatio );
+            self.lensHeight = String( self.options.zoomWindowHeight / self.heightRatio );
           }
 
           if ( self.largeWidth < self.options.zoomWindowWidth ) {
-            lensWidth = self.nzWidth;
+            self.lensWidth = self.nzWidth;
           } else {
-            lensWidth = self.options.zoomWindowWidth / self.widthRatio;
+            self.lensWidth = self.options.zoomWindowWidth / self.widthRatio;
           }
 
           self.widthRatio = self.largeWidth / self.nzWidth;
@@ -550,20 +550,20 @@ if ( typeof Object.create !== 'function' ) {
             // possibly dont need to keep recalcalculating
             // if the lens is heigher than the image, then set lens size to image size
             if ( self.nzHeight < self.options.zoomWindowWidth / self.widthRatio ) {
-              lensHeight = self.nzHeight;
+              self.lensHeight = self.nzHeight;
             } else {
-              lensHeight = String( self.options.zoomWindowHeight / self.heightRatio );
+              self.lensHeight = String( self.options.zoomWindowHeight / self.heightRatio );
             }
 
             if ( self.nzWidth < self.options.zoomWindowHeight / self.heightRatio ) {
-              lensWidth = self.nzWidth;
+              self.lensWidth = self.nzWidth;
             } else {
-              lensWidth = String( self.options.zoomWindowWidth / self.widthRatio );
+              self.lensWidth = String( self.options.zoomWindowWidth / self.widthRatio );
             }
 
             self.zoomLens.css( {
-              width: lensWidth,
-              height: lensHeight
+              width: self.lensWidth,
+              height: self.lensHeight
             } );
 
             if ( self.options.tint ) {
@@ -1372,21 +1372,21 @@ if ( typeof Object.create !== 'function' ) {
       // adjust images less than the window height
       if ( self.options.zoomType === 'window') {
         if ( self.nzHeight < self.options.zoomWindowWidth / self.widthRatio ) {
-          lensHeight = self.nzHeight;
+          self.lensHeight = self.nzHeight;
         } else {
-          lensHeight = String( self.options.zoomWindowHeight / self.heightRatio );
+          self.lensHeight = String( self.options.zoomWindowHeight / self.heightRatio );
         }
 
         if ( self.options.zoomWindowWidth < self.options.zoomWindowWidth ) {
-          lensWidth = self.nzWidth;
+          self.lensWidth = self.nzWidth;
         } else {
-          lensWidth = String( self.options.zoomWindowWidth / self.widthRatio );
+          self.lensWidth = String( self.options.zoomWindowWidth / self.widthRatio );
         }
 
         if ( self.zoomLens ) {
           self.zoomLens.css( {
-            width: lensWidth,
-            height: lensHeight
+            width: self.lensWidth,
+            height: self.lensHeight
           } );
         }
       }

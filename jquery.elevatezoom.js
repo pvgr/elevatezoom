@@ -192,9 +192,13 @@ if ( typeof Object.create !== 'function' ) {
         self.lensRound = 'border-radius: ' + String( self.options.lensSize / 2 + self.options.borderSize ) + 'px;';
       }
 
-      // create the div's
-      self.zoomContainer = $( '<div class="zoomContainer" style="left: ' + self.nzOffset.left + 'px; top: ' + self.nzOffset.top + 'px; height: ' + self.nzHeight + 'px; width: ' + self.nzWidth + 'px;"></div>' );
-      $( 'body' ).append( self.zoomContainer );
+      // create the div, if it doesn’t exist
+      if ( $( '.zoomContainer' ).length ) {
+        self.zoomContainer = $( '.zoomContainer' );
+      } else {
+        self.zoomContainer = $( '<div class="zoomContainer" style="left: ' + self.nzOffset.left + 'px; top: ' + self.nzOffset.top + 'px; height: ' + self.nzHeight + 'px; width: ' + self.nzWidth + 'px;"></div>' );
+        $( 'body' ).append( self.zoomContainer );
+      }
 
       // this will add overflow hidden and contain the lens on lens mode
       if ( self.options.containLensZoom && self.options.zoomType === 'lens' ) {

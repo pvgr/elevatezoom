@@ -1689,9 +1689,9 @@ if ( typeof Object.create !== 'function' ) {
     zoomWindowFadeIn: false,
     zoomWindowFadeOut: false,
     zoomWindowAlwaysShow: false,
-    onComplete: function() {},
+    onComplete: $.noop,
     onImageSwap: $.noop,
-    onImageSwapComplete: function() {},
-    onZoomedImageLoaded: function() {}
+    onImageSwapComplete: $.noop,
+    onZoomedImageLoaded: $.noop
   };
 } )( jQuery, window, document );

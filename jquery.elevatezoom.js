@@ -1145,6 +1145,11 @@ if ( typeof Object.create !== 'function' ) {
         // re-calculate values
         self.nzHeight = newImg2.height;
         self.nzWidth = newImg2.width;
+        // Fix the container's size
+        self.zoomContainer.css( {
+          height: self.$elem.height(),
+          width: self.$elem.width()
+        } );
         self.options.onImageSwapComplete( self.$elem );
 
         self.doneCallback();
